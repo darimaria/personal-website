@@ -1,0 +1,27 @@
+.contact-cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+}
+
+.contact-card {
+    padding: 50px;
+    width: 300px;
+    border: 2px solid black;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-10px) translateX(10px); /* Lift upward */
+    box-shadow: 0 20px 40px rgba(229, 6, 6, 0.502); /* Stronger shadow */
+}
+
+@media (max-width: 768px) {
+    .contact-cards-container {
+        display: grid;
+        gap: 100px;
+    }
+}

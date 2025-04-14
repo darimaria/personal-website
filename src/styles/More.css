@@ -1,0 +1,37 @@
+.cards-container {
+    display: flex;
+    gap: 10px;
+}
+.hobby-card {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: flex-start; /* Optional: align text to the left */
+    padding: 50px;
+    border: 2px solid black;
+    border-radius: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1; /* Take up equal space */
+    min-width: 0; /* Prevent flex-bug wrapping */
+}
+
+.hobby-card:hover {
+    box-shadow: 0 20px 40px rgba(229, 6, 6, 0.502); /* Stronger shadow */
+}
+
+.arrow {
+    opacity: 0;
+    margin-left: 8px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+.hobby-card:hover .arrow {
+    opacity: 1;
+    transform: translateX(6px); /* small slide right effect */
+}
+
+@media (max-width: 768px) {
+    .cards-container {
+        display: grid;
+        gap: 10px;
+    }
+}

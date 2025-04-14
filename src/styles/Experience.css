@@ -1,0 +1,15 @@
+.pdf-link {
+  color: #007bff;
+  text-decoration: underline;
+  font-size: 0.9rem;
+}
+
+.pdf-container {
+  max-height: 600px;
+  overflow-y: scroll;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  background: white;
+}

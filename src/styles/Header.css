@@ -1,0 +1,79 @@
+/* Header base styles */
+.header {
+    /* background-color: #fff; */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 500;
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between; /* Logo left, nav right */
+    align-items: center;
+    max-width: 1200px;
+    height: 64px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2563eb; /* Blue */
+  }
+  
+  /* Desktop nav */
+  .nav-desktop {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav-link {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .nav-link:hover {
+    color: #2563eb;
+  }
+  
+  /* Mobile nav toggle button */
+  .menu-button {
+    display: none;
+    cursor: pointer;
+    color: #333;
+  }
+  
+  /* Mobile nav styles */
+  .nav-mobile {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem 1rem;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-link-mobile {
+    padding: 0.5rem 0;
+    text-decoration: none;
+    color: #333;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .nav-link-mobile:hover {
+    color: #2563eb;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .nav-desktop {
+      display: none;
+    }
+  
+    .menu-button {
+      display: block;
+    }
+  }
+  
