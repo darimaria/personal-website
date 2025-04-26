@@ -5,14 +5,12 @@ import "../styles/Experience.css";
 pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
 
 const Experience = ({ fileURL }) => {
-  const [numPages, setNumPages] = useState(null);
-
   return (
-    <div className="experience-section">
+    <div id="experience">
       <div className="section-header">
         <h1>Experience</h1>
       </div>
-      <div className="pdf-header">
+      <div className="experience-section">
         <p>
           I graduated from the University of Rochester with a Bachelor's degree
           in Computer Science with a focus in machine learning and data

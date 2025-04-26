@@ -1,7 +1,7 @@
 .contact-cards-container {
     display: flex;
     justify-content: center;
-    gap: 200px;
+    gap: 100px;
 }
 
 .contact-card {
@@ -16,7 +16,7 @@
 
 .contact-card:hover {
     transform: translateY(-10px) translateX(10px); /* Lift upward */
-    box-shadow: 0 20px 40px rgba(229, 6, 6, 0.502); /* Stronger shadow */
+    box-shadow: 0 20px 40px rgba(255, 116, 241, 0.514); /* Stronger shadow */
 }
 
 @media (max-width: 768px) {

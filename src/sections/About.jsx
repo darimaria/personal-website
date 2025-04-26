@@ -4,7 +4,7 @@ import dari from "../assets/dari.jpeg";
 
 const About = () => {
   return (
-    <div>
+    <div id="about">
       <div className="section-header">
         <h1>About Me</h1>
       </div>

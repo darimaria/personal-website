@@ -6,7 +6,7 @@ const Contact = () => {
   const email = "dari.mariadennis@gmail.com";
   const linkedInURL = "https://www.linkedin.com/in/dari-dennis";
   return (
-    <div className="contact-section">
+    <div id="contact">
       <div className="section-header">
         <h1>Contact Me</h1>
       </div>
@@ -14,7 +14,6 @@ const Contact = () => {
         <div className="contact-card">
           <a
             href={`mailto:${email}`}
-            className="flex items-center gap-4 p-4 bg-white shadow-md rounded-2xl hover:shadow-lg transition"
           >
             <Mail size={84} />
             <div>
@@ -27,7 +26,6 @@ const Contact = () => {
             href={linkedInURL}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-4 p-4 bg-white shadow-md rounded-2xl hover:shadow-lg transition"
           >
             <Linkedin size={84} />
             <div>

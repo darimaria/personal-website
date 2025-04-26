@@ -8,13 +8,16 @@ const Header = () => {
   const navLinks = ["Home", "About", "Experience", "More", "Contact"];
   return (
     <header className="header">
-      <div className="header-container">
+      <div className="header-container" id="home">
         {/* Logo */}
         <div className="logo"> Dari Dennis </div>
         {/* Desktop Navigation */}
         <nav className="nav-desktop">
           {navLinks.map((link) => (
-            <a key={link} href={`#${link.toLowerCase()}`} className="nav-link">
+            <a key={link} href={`#${link.toLowerCase()}`} className="nav-link" onClick={(e)=>{if (link == "Home") {
+              e.preventDefault()
+              window.scrollTo({top: 0 , behavior: "smooth"});
+            }}}>
               {link}
             </a>
           ))}

@@ -1,5 +1,6 @@
 .cards-container {
     display: flex;
+    padding: 20px;
     gap: 10px;
 }
 .hobby-card {
@@ -15,7 +16,7 @@
 }
 
 .hobby-card:hover {
-    box-shadow: 0 20px 40px rgba(229, 6, 6, 0.502); /* Stronger shadow */
+    box-shadow: 0 20px 40px rgba(255, 116, 241, 0.514); /* Stronger shadow */
 }
 
 .arrow {

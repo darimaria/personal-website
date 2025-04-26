@@ -4,6 +4,10 @@
   font-size: 0.9rem;
 }
 
+.experience-section {
+  padding: 20px;
+}
+
 .pdf-container {
   max-height: 600px;
   overflow-y: scroll;

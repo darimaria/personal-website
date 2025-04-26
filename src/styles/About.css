@@ -1,5 +1,6 @@
 .about-container {
     display: flex;
+    padding: 20px;
 }
 
 .image-container {
