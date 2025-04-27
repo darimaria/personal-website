@@ -1,8 +1,14 @@
+.writing-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Make full viewport height */
+    overflow: hidden;
+}
 .writing-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1rem;
 }
 
 .writing-title {
@@ -26,7 +32,7 @@
 }
 
 .tags-container {
-    padding: 1rem;
+    padding: 5px;
     border-bottom: 1px solid #ccc;
     overflow-x: auto;
     white-space: nowrap;
