@@ -6,7 +6,7 @@ const Contact = () => {
   const email = "dari.mariadennis@gmail.com";
   const linkedInURL = "https://www.linkedin.com/in/dari-dennis";
   return (
-    <div id="contact">
+    <div className="contact" id="contact">
       <div className="section-header">
         <h1>Contact Me</h1>
       </div>

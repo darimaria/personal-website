@@ -1,3 +1,6 @@
+.contact {
+    padding: 20px;
+}
 .contact-cards-container {
     display: flex;
     justify-content: center;
