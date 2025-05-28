@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import "../styles/ReadingPage.css"; // optional for styling
 
 const apiUrl = "https://bookcover.longitood.com/bookcover?";
+const CACHE_KEY = "bookCoversCache";
 const ReadingPage = () => {
   const books = {
     "Letter to My Daughter": "Maya Angelou",
@@ -9,9 +11,15 @@ const ReadingPage = () => {
   };
 
   const [covers, setCovers] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCovers = async () => {
+      const cached = localStorage.getItem(CACHE_KEY);
+      if (cached) {
+        setCovers(JSON.parse(cached));
+        return;
+      }
       const coverPromises = Object.entries(books).map(
         async ([title, author]) => {
           const encodedTitle = encodeURIComponent(title);
@@ -31,6 +39,7 @@ const ReadingPage = () => {
 
       const resolvedCovers = (await Promise.all(coverPromises)).filter(Boolean);
       setCovers(resolvedCovers);
+      localStorage.setItem(CACHE_KEY, JSON.stringify(resolvedCovers));
     };
 
     fetchCovers();
@@ -38,7 +47,12 @@ const ReadingPage = () => {
 
   return (
     <div className="reading-page">
-      <h1>Books I'm Reading</h1>
+      <div className="reading-header">
+        <h1 className="reading-title">Books I'm Reading</h1>
+        <button className="back-button" onClick={() => navigate("/#more")}>
+          ← Back to Home
+        </button>
+      </div>
       <div className="cover-grid">
         {covers.map((book, index) => (
           <div className="book-item" key={index}>

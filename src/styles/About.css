@@ -31,3 +31,9 @@ p {
         display: grid;
     }
 }
+
+@media (min-width: 769px) {
+    img {
+        width: 1000px;
+    }
+}

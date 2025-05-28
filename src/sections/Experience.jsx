@@ -1,6 +1,9 @@
 import { React, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import "../styles/Experience.css";
+import { FaReact, FaPython, FaSwift,  FaJira, FaJava, FaWindows, FaGithub, } from "react-icons/fa";
+import { IoLogoJavascript } from "react-icons/io";
+import { SiKotlin, SiPostman } from "react-icons/si";
 
 pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
 
@@ -29,6 +32,10 @@ const Experience = ({ fileURL }) => {
           my resume.
           </a>
         </p>
+        <div className="skills-container">
+          <FaReact/>
+          
+        </div>
       </div>
     </div>
   );
