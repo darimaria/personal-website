@@ -1,9 +1,10 @@
 import React from 'react';
+import Canvas from '../components/Canvas';
 
 const MiscPage = () => {
     return (
-        <div>
-            <h1>TBA</h1>
+        <div style={{padding: "30px"}}>
+            <Canvas/>
         </div>
     );
 }

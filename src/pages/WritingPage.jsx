@@ -7,6 +7,7 @@ import Tag from "../components/Tag.jsx";
 import "../styles/WritingPage.css";
 import EssayListItem from "../components/EssayListItem";
 import { useNavigate } from "react-router";
+
 const essayFiles = [
   { raw: essay1, filename: "dignity_of_choice.md" },
   { raw: essay2, filename: "language.md" },
@@ -17,7 +18,7 @@ const WritingPage = () => {
   const [filteredTag, setFilteredTag] = useState(null);
   const [selectedEssay, setSelectedEssay] = useState(null);
   const [allTags, setAllTags] = useState([]);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const parsedEssays = essayFiles.map(({ raw, filename }) => {

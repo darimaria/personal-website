@@ -1,49 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import "../styles/ReadingPage.css"; // optional for styling
+import { fetchBookCover, useBookCovers, books } from "../api/bookCovers";
+import { useQuery } from "@tanstack/react-query";
 
-const apiUrl = "https://bookcover.longitood.com/bookcover?";
-const CACHE_KEY = "bookCoversCache";
 const ReadingPage = () => {
-  const books = {
-    "Letter to My Daughter": "Maya Angelou",
-    "State of Siege": "Mahmoud Darwish",
-  };
+  const results = useBookCovers();
 
-  const [covers, setCovers] = useState([]);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchCovers = async () => {
-      const cached = localStorage.getItem(CACHE_KEY);
-      if (cached) {
-        setCovers(JSON.parse(cached));
-        return;
-      }
-      const coverPromises = Object.entries(books).map(
-        async ([title, author]) => {
-          const encodedTitle = encodeURIComponent(title);
-          const encodedAuthor = encodeURIComponent(author);
-          const reqUrl = `${apiUrl}book_title=${encodedTitle}&author_name=${encodedAuthor}`;
-          try {
-            const response = await fetch(reqUrl);
-            if (!response.ok) throw new Error("Failed to fetch");
-            const data = await response.json();
-            return { title, coverUrl: data.url || data }; // adjust depending on API format
-          } catch (err) {
-            console.error(`Error fetching cover for ${title}:`, err);
-            return null;
-          }
-        }
-      );
-
-      const resolvedCovers = (await Promise.all(coverPromises)).filter(Boolean);
-      setCovers(resolvedCovers);
-      localStorage.setItem(CACHE_KEY, JSON.stringify(resolvedCovers));
-    };
-
-    fetchCovers();
-  }, []);
 
   return (
     <div className="reading-page">
@@ -53,13 +17,31 @@ const ReadingPage = () => {
           ← Back to Home
         </button>
       </div>
-      <div className="cover-grid">
-        {covers.map((book, index) => (
-          <div className="book-item" key={index}>
-            <img src={book.coverUrl} alt={book.title} />
-            <p>{book.title}</p>
-          </div>
-        ))}
+      <div className="grid grid-cols-7">
+        {results.map((query, index) => {
+          const { title, author } = books[index];
+
+          if (query.isLoading) return <p key={index}>Loading {title}...</p>;
+          if (query.isError) return <p key={index}>Error loading {title}</p>;
+
+          const { coverUrl } = query.data || {};
+
+          return (
+            <div key={index} className="flex flex-col items-center">
+              <h4>{title}</h4>
+              <p className="text-sm text-gray-600">by {author}</p>
+              {coverUrl ? (
+                <img
+                  src={coverUrl}
+                  alt={`Cover of ${title}`}
+                  style={{'width':'150px', 'height':'225px'}}
+                />
+              ) : (
+                <p>No cover found</p>
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

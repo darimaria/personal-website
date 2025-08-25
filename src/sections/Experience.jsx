@@ -1,13 +1,63 @@
-import { React, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import "../styles/Experience.css";
-import { FaReact, FaPython, FaSwift,  FaJira, FaJava, FaWindows, FaGithub, } from "react-icons/fa";
+import {
+  FaReact,
+  FaPython,
+  FaSwift,
+  FaJira,
+  FaJava,
+  FaWindows,
+  FaGithub,
+} from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io";
 import { SiKotlin, SiPostman } from "react-icons/si";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
+const icons = [
+  FaReact,
+  FaPython,
+  FaSwift,
+  FaJira,
+  FaJava,
+  FaWindows,
+  FaGithub,
+  IoLogoJavascript,
+  SiKotlin,
+  SiPostman,
+];
 
 const Experience = ({ fileURL }) => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const iconEls = containerRef.current.querySelectorAll(".circle-icon");
+
+    // Bounce-in animation
+    gsap.fromTo(
+      iconEls,
+      { scale: 0, opacity: 0 },
+      {
+        scale: 1,
+        opacity: 1,
+        duration: 1,
+        ease: "bounce.out",
+        stagger: 0.1,
+      }
+    );
+
+    // Continuous circular rotation of the entire container
+    gsap.to(containerRef.current, {
+      rotate: 360,
+      duration: 20,
+      ease: "linear",
+      repeat: -1,
+      transformOrigin: "center center",
+    });
+  }, []);
+
   return (
     <div id="experience">
       <div className="section-header">
@@ -27,14 +77,26 @@ const Experience = ({ fileURL }) => {
           skills. For this reason, I am always working on some project or in
           search of the next thing I can sink my teeth into and learn about. I
           am continuously growing and expanding my skill set but if you are
-          curious about what follows me, take a look at{' '}
-          <a href={fileURL} target="_blank" rel="noopener noreferrer">
-          my resume.
+          curious about what follows me, take a look at{" "}
+          <a className='pdf-link' href={fileURL} target="_blank" rel="noopener noreferrer">
+            my resume.
           </a>
         </p>
-        <div className="skills-container">
-          <FaReact/>
-          
+        <div className="circle-wrapper" ref={containerRef}>
+          {icons.map((Icon, i) => {
+            const angle = (360 / icons.length) * i;
+            return (
+              <div
+                key={i}
+                className="circle-icon"
+                style={{
+                  transform: `rotate(${angle}deg) translate(150px)`,
+                }}
+              >
+                <Icon size={40} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
